@@ -124,11 +124,10 @@ function dynamicClothingSection(ob) {
   let boxLink = document.createElement("a");
   let message = `I got interested in buying the ${ob.name} bag priced at Rs ${ob.price}.`;
   boxLink.href = `https://wa.me/9830066905?text=${encodeURIComponent(message)}`;
-
   let imgTag = document.createElement("img");
   imgTag.src = ob.preview;
-  imgTag.style.width = "200px";
-  imgTag.style.height = "200px";
+  imgTag.style.width = "100%";
+  imgTag.style.height = "auto";
   imgTag.style.objectFit = "cover";
   imgTag.style.borderRadius = "5px";
 
