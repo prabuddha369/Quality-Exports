@@ -19,16 +19,13 @@ function dynamicContentDetails(ob)
     imageSectionDiv.id = 'imageSection'
 
     let imgTag = document.createElement('img')
-     imgTag.id = 'imgDetails'
-     //imgTag.id = ob.photos
-     imgTag.src = ob.preview
+    imgTag.id = 'imgDetails'
+    imgTag.src = ob.preview
 
     imageSectionDiv.appendChild(imgTag)
 
     let productDetailsDiv = document.createElement('div')
     productDetailsDiv.id = 'productDetails'
-
-    // console.log(productDetailsDiv);
 
     let h1 = document.createElement('h1')
     let h1Text = document.createTextNode(ob.name)
@@ -100,8 +97,6 @@ function dynamicContentDetails(ob)
     }
     buttonTag.appendChild(buttonText)
 
-
-    console.log(mainContainer.appendChild(imageSectionDiv));
     mainContainer.appendChild(imageSectionDiv)
     mainContainer.appendChild(productDetailsDiv)
     productDetailsDiv.appendChild(h1)
@@ -111,37 +106,126 @@ function dynamicContentDetails(ob)
     detailsDiv.appendChild(h3)
     detailsDiv.appendChild(para)
     productDetailsDiv.appendChild(productPreviewDiv)
-    
-    
     productDetailsDiv.appendChild(buttonDiv)
-
 
     return mainContainer
 }
 
+let contentTitle = [
+  // Jute Shopping Bags
+  {
+    id: 1,
+    name: "Eco-Friendly Jute Shopping Bag",
+    brand: "EcoBrand",
+    price: 250,
+    preview: "img/jsb (1).jpg",
+    category: "jute-shopping-bag",
+  },
+  {
+    id: 2,
+    name: "Reusable Jute Tote Bag",
+    brand: "EcoCarry",
+    price: 300,
+    preview: "img/jsb (2).jpg",
+    category: "jute-shopping-bag",
+  },
+  {
+    id: 3,
+    name: "Large Jute Carry Bag",
+    brand: "EcoGoods",
+    price: 350,
+    preview: "img/jsb (3).jpg",
+    category: "jute-shopping-bag",
+  },
+  {
+    id: 4,
+    name: "Stylish Jute Bag",
+    brand: "EcoFashion",
+    price: 280,
+    preview: "img/jsb (4).jpg",
+    category: "jute-shopping-bag",
+  },
+  {
+    id: 5,
+    name: "Printed Jute Bag",
+    brand: "EcoPrints",
+    price: 320,
+    preview: "img/jsb (5).jpg",
+    category: "jute-shopping-bag",
+  },
+  {
+    id: 6,
+    name: "Foldable Jute Shopping Bag",
+    brand: "EcoFold",
+    price: 240,
+    preview: "img/jsb (6).jpg",
+    category: "jute-shopping-bag",
+  },
 
+  // Jute Bottle Bags
+  {
+    id: 7,
+    name: "Single Bottle Jute Bag",
+    brand: "EcoBottle",
+    price: 150,
+    preview: "img/jbb (1).jpeg",
+    category: "jute-bottle-bag",
+  },
+  {
+    id: 8,
+    name: "Double Bottle Jute Bag",
+    brand: "EcoTwins",
+    price: 200,
+    preview: "img/jbb (2).jpeg",
+    category: "jute-bottle-bag",
+  },
+  {
+    id: 9,
+    name: "Triple Bottle Jute Bag",
+    brand: "EcoTriple",
+    price: 250,
+    preview: "img/jbb (3).jpeg",
+    category: "jute-bottle-bag",
+  },
+  {
+    id: 10,
+    name: "Customizable Bottle Jute Bag",
+    brand: "EcoCustomize",
+    price: 300,
+    preview: "img/jbb (4).jpeg",
+    category: "jute-bottle-bag",
+  },
 
-// BACKEND CALLING
+  // Jute Pouches
+  {
+    id: 11,
+    name: "Small Jute Pouch",
+    brand: "EcoSmall",
+    price: 100,
+    preview: "img/jsp (1).png",
+    category: "jute-pouch",
+  },
+  {
+    id: 12,
+    name: "Drawstring Jute Pouch",
+    brand: "EcoDraw",
+    price: 120,
+    preview: "img/jsp (2).png",
+    category: "jute-pouch",
+  },
+  {
+    id: 13,
+    name: "Printed Jute Pouch",
+    brand: "EcoArt",
+    price: 140,
+    preview: "img/jsp (1).jpeg",
+    category: "jute-pouch",
+  },
+];
 
-let httpRequest = new XMLHttpRequest()
-{
-    httpRequest.onreadystatechange = function()
-    {
-        if(this.readyState === 4 && this.status == 200)
-        {
-            console.log('connected!!');
-            let contentDetails = JSON.parse(this.responseText)
-            {
-                console.log(contentDetails);
-                dynamicContentDetails(contentDetails)
-            }
-        }
-        else
-        {
-            console.log('not connected!');
-        }
-    }
+let product = contentTitle.find(item => item.id == id);
+if (product) {
+    dynamicContentDetails(product);
+} else {
+    console.log('Product not found!');
 }
-
-httpRequest.open('GET', 'https://5d76bf96515d1a0014085cf9.mockapi.io/product/'+id, true)
-httpRequest.send()  
